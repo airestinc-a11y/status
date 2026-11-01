@@ -1,4 +1,4 @@
-owner: AIREST-ai
+owner: airestinc-a11y
 repo: status
 
 sites:
@@ -9,7 +9,7 @@ sites:
 
 status-website:
   cname: status.airest.ai
-  logoUrl: https://raw.githubusercontent.com/AIREST-ai/status/main/assets/airest-icon.png
+  logoUrl: https://raw.githubusercontent.com/airestinc-a11y/status/master/assets/airest-icon.png
   name: Airest Status
   introTitle: "**Airest** service status"
   introMessage: Live availability of the Airest website and app, checked every 5 minutes.
