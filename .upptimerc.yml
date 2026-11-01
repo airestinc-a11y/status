@@ -6,13 +6,29 @@ sites:
     url: https://airest.ai
   - name: App
     url: https://app.airest.ai/login
+  - name: WhatsApp messages
+    slug: whatsapp
+    url: https://inbox.airest.ai/webhooks/whatsapp/status-check
+    expectedStatusCodes:
+      - 401
+  - name: Instagram messages
+    slug: instagram
+    url: https://inbox.airest.ai/webhooks/instagram
+    expectedStatusCodes:
+      - 401
+  - name: Messenger messages
+    slug: messenger
+    url: https://inbox.airest.ai/bot
+  - name: Website chat
+    slug: website-chat
+    url: https://inbox.airest.ai/packs/js/sdk.js
 
 status-website:
   cname: status.airest.ai
   logoUrl: https://raw.githubusercontent.com/airestinc-a11y/status/master/assets/airest-icon.png
   name: Airest Status
   introTitle: "**Airest** service status"
-  introMessage: Live availability of the Airest website and app, checked every 5 minutes.
+  introMessage: Live availability of the Airest website, app and message channels, checked every 5 minutes.
   navbar:
     - title: Status
       href: /
