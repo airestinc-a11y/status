@@ -36,6 +36,24 @@
     "dailyMinutesDown": {}
   },
   {
+    "name": "Messaging engine",
+    "url": "https://app.airest.ai/api/health",
+    "icon": "https://icons.duckduckgo.com/ip3/app.airest.ai.ico",
+    "slug": "messaging-engine",
+    "status": "up",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
+    "time": 850,
+    "timeDay": 850,
+    "timeWeek": 850,
+    "timeMonth": 850,
+    "timeYear": 850,
+    "dailyMinutesDown": {}
+  },
+  {
     "name": "WhatsApp messages",
     "url": "https://inbox.airest.ai/webhooks/whatsapp/status-check",
     "icon": "https://icons.duckduckgo.com/ip3/inbox.airest.ai.ico",
