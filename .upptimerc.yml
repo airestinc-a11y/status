@@ -40,3 +40,6 @@ status-website:
       href: https://airest.ai
     - title: Security
       href: https://airest.ai/security
+
+i18n:
+  liveStatus: Status
