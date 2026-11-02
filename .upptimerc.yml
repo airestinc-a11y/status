@@ -6,6 +6,10 @@ sites:
     url: https://airest.ai
   - name: App
     url: https://app.airest.ai/login
+  - name: Messaging engine
+    slug: messaging-engine
+    url: https://app.airest.ai/api/health
+    __dangerous__body_down_if_text_missing: '"status":"ok"'
   - name: WhatsApp messages
     slug: whatsapp
     url: https://inbox.airest.ai/webhooks/whatsapp/status-check
