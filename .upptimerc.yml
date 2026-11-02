@@ -32,7 +32,7 @@ status-website:
   logoUrl: https://raw.githubusercontent.com/airestinc-a11y/status/master/assets/airest-icon.png
   name: Airest Status
   introTitle: "**Airest** service status"
-  introMessage: Live availability of the Airest website, app, messaging engine and message receivers, checked every 5 minutes. A receiver being up means it is ready to accept messages from that channel; it does not show whether a given company has connected the channel.
+  introMessage: Availability of the Airest website, app, messaging engine and message receivers, checked automatically several times a day. A receiver being up means it is ready to accept messages from that channel; it does not show whether a given company has connected the channel.
   navbar:
     - title: Status
       href: /
