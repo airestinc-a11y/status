@@ -54,7 +54,7 @@
     "dailyMinutesDown": {}
   },
   {
-    "name": "WhatsApp messages",
+    "name": "WhatsApp message receiver",
     "url": "https://inbox.airest.ai/webhooks/whatsapp/status-check",
     "icon": "https://icons.duckduckgo.com/ip3/inbox.airest.ai.ico",
     "slug": "whatsapp",
@@ -72,7 +72,7 @@
     "dailyMinutesDown": {}
   },
   {
-    "name": "Instagram messages",
+    "name": "Instagram message receiver",
     "url": "https://inbox.airest.ai/webhooks/instagram",
     "icon": "https://icons.duckduckgo.com/ip3/inbox.airest.ai.ico",
     "slug": "instagram",
@@ -90,7 +90,7 @@
     "dailyMinutesDown": {}
   },
   {
-    "name": "Messenger messages",
+    "name": "Messenger message receiver",
     "url": "https://inbox.airest.ai/bot",
     "icon": "https://icons.duckduckgo.com/ip3/inbox.airest.ai.ico",
     "slug": "messenger",
@@ -108,7 +108,7 @@
     "dailyMinutesDown": {}
   },
   {
-    "name": "Website chat",
+    "name": "Website chat script",
     "url": "https://inbox.airest.ai/packs/js/sdk.js",
     "icon": "https://icons.duckduckgo.com/ip3/inbox.airest.ai.ico",
     "slug": "website-chat",
