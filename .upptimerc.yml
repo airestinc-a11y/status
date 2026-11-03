@@ -33,6 +33,9 @@ status-website:
   name: Airest Status
   introTitle: "**Airest** service status"
   introMessage: Availability of the Airest website, app, messaging engine and message receivers, checked automatically several times a day. A receiver being up means it is ready to accept messages from that channel; it does not show whether a given company has connected the channel.
+  scripts:
+    - src: https://status.airest.ai/last-check.js
+      async: true
   navbar:
     - title: Status
       href: /
