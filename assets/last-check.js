@@ -87,7 +87,10 @@
     "border-bottom-color:var(--down-border-left-color,#eb3b5a)}" +
     "#airest-last-check.unknown{border-bottom-color:var(--degraded-border-left-color,#f7b731)}";
 
+  // The page framework re-creates this <script> tag when it hydrates, so the file runs twice per load:
+  // the second run must do nothing. Returns true only for the run that started.
   function start(doc, win) {
+    if (doc.getElementById("airest-last-check")) return false;
     var style = doc.createElement("style");
     style.textContent = CSS;
     doc.head.appendChild(style);
@@ -115,6 +118,7 @@
     refresh();
     win.setInterval(refresh, REFRESH_MS);
     win.setInterval(paint, REPAINT_MS);
+    return true;
   }
 
   var api = {
@@ -124,6 +128,7 @@
     formatUtc: formatUtc,
     describe: describe,
     load: load,
+    start: start,
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 

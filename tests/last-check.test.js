@@ -106,6 +106,56 @@ test("load: success gives the time, failures give unknown", async () => {
   assert.equal(badJson, null);
 });
 
+// The page framework re-creates the <script> tag when it hydrates, so the file runs twice per page load.
+function fakeDoc() {
+  const sapper = { id: "sapper" };
+  const byId = { sapper };
+  const body = {
+    children: [sapper],
+    firstChild: sapper,
+    insertBefore(el, ref) {
+      this.children.splice(this.children.indexOf(ref), 0, el);
+      if (el.id) byId[el.id] = el;
+    },
+  };
+  const head = { children: [], appendChild(el) { this.children.push(el); } };
+  return {
+    head,
+    body,
+    getElementById: (id) => byId[id] || null,
+    createElement: (tagName) => ({ tagName, id: "", className: "", textContent: "", setAttribute() {} }),
+  };
+}
+
+test("start run twice on one page adds a single bar and a single style", async () => {
+  const doc = fakeDoc();
+  const timers = [];
+  const win = {
+    fetch: async () => ({ ok: true, json: async () => ({ workflow_runs: [{ updated_at: new Date().toISOString() }] }) }),
+    setInterval: (fn, ms) => timers.push(ms),
+  };
+  assert.equal(lc.start(doc, win), true);
+  assert.equal(lc.start(doc, win), false);
+  await new Promise((r) => setTimeout(r, 10));
+  const bars = doc.body.children.filter((c) => c.id === "airest-last-check");
+  assert.equal(bars.length, 1);
+  assert.equal(doc.head.children.length, 1);
+  assert.equal(timers.length, 2); // one refresh timer and one repaint timer, not four
+  assert.match(bars[0].textContent, /Last successful check: less than a minute ago/);
+  assert.equal(bars[0].className, "ok");
+  assert.equal(doc.body.children.indexOf(bars[0]), 0); // before #sapper
+});
+
+test("start with a failing API shows the honest unknown sentence", async () => {
+  const doc = fakeDoc();
+  const win = { fetch: async () => ({ ok: false, status: 403 }), setInterval: () => 0 };
+  lc.start(doc, win);
+  await new Promise((r) => setTimeout(r, 10));
+  const bar = doc.getElementById("airest-last-check");
+  assert.equal(bar.className, "unknown");
+  assert.match(bar.textContent, /could not be read/);
+});
+
 test("the request targets only this repo's Uptime CI workflow and successful runs", () => {
   assert.match(lc.API_URL, /^https:\/\/api\.github\.com\/repos\/airestinc-a11y\/status\/actions\/workflows\/uptime\.yml\/runs\?/);
   assert.match(lc.API_URL, /status=success/);
